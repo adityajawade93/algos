@@ -68,7 +68,7 @@ class LinkedList {
     }
 
     get(index) {
-        if (index < 0 || index > this.length) { return null }
+        if (index < 0 || index >= this.length) { return null }
         let current = this.head
         let counter = 0
         while(counter !== index) {
@@ -105,9 +105,9 @@ class LinkedList {
     }
 
     remove(index) {
-        if (index < 0 || index > this.length) { return undefined }
+        if (index < 0 || index >= this.length) { return undefined }
         if (index === 0 ) return this.shift()
-        if (index === this.length) return this.pop()
+        if (index === this.length - 1) return this.pop()
         
         let previousNode = this.get(index - 1)
         let removedNode = previousNode.next
@@ -155,7 +155,7 @@ l.print()
 l.unshift(25)
 l.unshift(39)
 l.print()
-console.log(l.get(0))
+console.log(l.get(l.length - 1))
 console.log(l.insert(567, 1))
 l.print()
 l.reverse()
