@@ -52,21 +52,37 @@ class BinarySearchTree {
             }
         }
     }
+
+    bfs() {
+
+        if (!this.root) { return undefined }
+
+        let queue = [this.root]
+        let visited = []
+
+        while(queue.length) {
+            let currentNode = queue.shift()
+            visited.push(currentNode.data)
+            
+            if (currentNode.left) {
+                queue.push(currentNode.left)
+            }
+
+            if (currentNode.right) {
+                queue.push(currentNode.right)
+            }
+        }
+
+        return visited
+    }
 }
 
-module.exports = function() {
-    return new BinarySearchTree()
-}
+const t1 = new BinarySearchTree
 
-// t1.insert(10)
-// t1.insert(16)
-// t1.insert(19)
-// t1.insert(6)
-// t1.insert(5)
-// t1.insert(3)
-
-// console.log(t1.search(99))
-
-// console.log(JSON.stringify(t1, null, 2))
-
-// console.log(t1.insert(10))
+t1.insert(10)
+t1.insert(6)
+t1.insert(15)
+t1.insert(3)
+t1.insert(8)
+t1.insert(20)
+console.log(t1.bfs())
